@@ -9,10 +9,15 @@
     <div class="main-container">
       <h1> DevMountain Chat Room </h1>
       <form ng-submit="postData()">
-        <input class="form-control text-box" type="text" ng-model="message" placeholder="Message">
+        <input class="form-control text-box" type="text" data-ng-model="message" placeholder="Message">
       </form>
+        <input type="text" class="form-control text-box" placeholder="Filter by message" data-ng-model="allMessages">
+        <div class="text-box">
+          <input type="radio" data-ng-model="time">Ascending</input>
+          <input type="radio" data-ng-model="time" value="reverse">Descending</input>
+        </div>
       <div class="messages-container">
-        <p ng-repeat="message in messages"> {{message.text}} </p>
+        <p ng-repeat="message in messages | filter: allMessages | orderBy: 'createdAt' : !time"> {{ message.text }} <span class="datePosition">{{message.createdAt | date: "yyyy-MM-dd HH:mm:ss"}}</span> <br /></p> 
       </div>
     </div>
     <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
