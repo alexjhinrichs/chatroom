@@ -17,7 +17,7 @@
           <input type="radio" data-ng-model="time" value="reverse">Descending</input>
         </div>
       <div class="messages-container">
-        <p ng-repeat="message in messages | filter: allMessages | orderBy: 'createdAt' : !time"> {{ message.text }} <span class="datePosition">{{message.createdAt | date: "yyyy-MM-dd HH:mm:ss"}}</span> <br /></p> 
+        <p ng-repeat="message in messages | filter: allMessages | orderBy: 'createdAt' : !time" ng-if="message.text"> {{ message.text }} <span class="datePosition">{{message.createdAt | date: "yyyy-MM-dd HH:mm:ss"}}</span> <br /></p> 
       </div>
     </div>
     <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
